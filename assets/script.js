@@ -26,13 +26,30 @@ arrowRight.addEventListener("click", function () {
 	alert("flèche droite");
 });
 
-const dots = document.querySelector(".dots");
+const dotsContainer = document.querySelector(".dots");
 
-for (const i = 0; i < slides.length; i++) {
+for (let i = 0; i < slides.length; i++) {
 	const dot = document.createElement("div");
 	dot.classList.add("dot");
-	dots.appendChild(dot);
+	dotsContainer.appendChild(dot);
 
 };
 
-const dotSelected = document.querySelector(".dot_selected");
+//sélectionne la première diapo
+const SlideIndex = 0;
+
+//mettre à jour la class dot_selected selon l'index de la diapo en cours
+
+function SelectedDot() {
+	const dots = dotsContainer.querySelectorAll(".dot");
+	dots.forEach(function (dot, index) {
+		if (index === SlideIndex) {
+			dot.classList.add("dot_selected");
+		}
+		else {
+			dot.classList.remove("dot_selected");
+		}
+	}
+	)
+}
+SelectedDot();
