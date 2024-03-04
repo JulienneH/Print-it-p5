@@ -16,14 +16,42 @@ const slides = [
 		"tagLine": "Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
-var arrowLeft = document.querySelector(".arrow_left");
-arrowLeft.addEventListener("click", function () {
-	alert("flèche gauche");
+//sélectionne la première diapo
+let SlideIndex = 0;
+
+const bannerText = banner.querySelector("p");
+
+// fonction pour afficher la diapo
+function showSlide(index) {
+	const slide = slides[index];
+	const imageElement = document.querySelector(".banner-img");
+
+	imageElement.src = `./assets/images/slideshow/${slide.image}`;
+	bannerText.innerHTML = slide.tagLine;
+}
+
+//Afficher la première diapo au chargement de la page
+showSlide(SlideIndex);
+
+//gestionnaire d'événements pour les flèches
+const arrowLeft = document.querySelector(".arrow_left");
+arrowLeft.addEventListener("click", function previous() {
+	SlideIndex--;
+	if (SlideIndex < 0) {
+		SlideIndex = slides.length - 1;
+	}
+	showSlide(SlideIndex);
+	SelectedDot();
 });
 
 var arrowRight = document.querySelector(".arrow_right");
-arrowRight.addEventListener("click", function () {
-	alert("flèche droite");
+arrowRight.addEventListener("click", function next() {
+	SlideIndex++;
+	if (SlideIndex >= slides.length) {
+		SlideIndex = 0;
+	}
+	showSlide(SlideIndex);
+	SelectedDot();
 });
 
 const dotsContainer = document.querySelector(".dots");
@@ -35,8 +63,7 @@ for (let i = 0; i < slides.length; i++) {
 
 };
 
-//sélectionne la première diapo
-const SlideIndex = 0;
+
 
 //mettre à jour la class dot_selected selon l'index de la diapo en cours
 
@@ -52,4 +79,3 @@ function SelectedDot() {
 	}
 	)
 }
-SelectedDot();
