@@ -16,12 +16,12 @@ const slides = [
 		"tagLine": "Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
-//sélectionne la première diapo
+//select the first slide
 let slideIndex = 0;
 
 const bannerText = banner.querySelector("p");
 
-// fonction pour afficher la diapo
+// function to display the slide
 function showSlide(index) {
 	const slide = slides[index];
 	const imageElement = document.querySelector(".banner-img");
@@ -30,13 +30,13 @@ function showSlide(index) {
 	bannerText.innerHTML = slide.tagLine;
 }
 
-//Afficher la première diapo au chargement de la page
+//Show first slide on page load
 showSlide(slideIndex);
 
 
 
 
-//gestionnaire d'événements pour les flèches
+//event handler for arrows
 const arrowLeft = document.querySelector(".arrow_left");
 arrowLeft.addEventListener("click", function previous() {
 	slideIndex--;
@@ -66,10 +66,10 @@ for (let i = 0; i < slides.length; i++) {
 
 };
 
-// Appel de la fonction SelectedDot après avoir créé les bullets points
+// Calling the SelectedDot function after creating the bullet points
 selectedDot();
 
-//mettre à jour la class dot_selected selon l'index de la diapo en cours
+//update the dot_selected class according to the index of the current slide
 
 function selectedDot() {
 	const dots = dotsContainer.querySelectorAll(".dot");
