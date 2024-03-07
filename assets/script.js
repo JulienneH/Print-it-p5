@@ -33,6 +33,9 @@ function showSlide(index) {
 //Afficher la première diapo au chargement de la page
 showSlide(SlideIndex);
 
+
+
+
 //gestionnaire d'événements pour les flèches
 const arrowLeft = document.querySelector(".arrow_left");
 arrowLeft.addEventListener("click", function previous() {
@@ -63,7 +66,8 @@ for (let i = 0; i < slides.length; i++) {
 
 };
 
-
+// Appel de la fonction SelectedDot après avoir créé les bullets points
+SelectedDot();
 
 //mettre à jour la class dot_selected selon l'index de la diapo en cours
 
@@ -76,6 +80,5 @@ function SelectedDot() {
 		else {
 			dot.classList.remove("dot_selected");
 		}
-	}
-	)
+	})
 }
