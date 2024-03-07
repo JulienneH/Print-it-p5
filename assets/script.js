@@ -17,7 +17,7 @@ const slides = [
 	}
 ]
 //sélectionne la première diapo
-let SlideIndex = 0;
+let slideIndex = 0;
 
 const bannerText = banner.querySelector("p");
 
@@ -31,7 +31,7 @@ function showSlide(index) {
 }
 
 //Afficher la première diapo au chargement de la page
-showSlide(SlideIndex);
+showSlide(slideIndex);
 
 
 
@@ -39,22 +39,22 @@ showSlide(SlideIndex);
 //gestionnaire d'événements pour les flèches
 const arrowLeft = document.querySelector(".arrow_left");
 arrowLeft.addEventListener("click", function previous() {
-	SlideIndex--;
-	if (SlideIndex < 0) {
-		SlideIndex = slides.length - 1;
+	slideIndex--;
+	if (slideIndex < 0) {
+		slideIndex = slides.length - 1;
 	}
-	showSlide(SlideIndex);
-	SelectedDot();
+	showSlide(slideIndex);
+	selectedDot();
 });
 
 var arrowRight = document.querySelector(".arrow_right");
 arrowRight.addEventListener("click", function next() {
-	SlideIndex++;
-	if (SlideIndex >= slides.length) {
-		SlideIndex = 0;
+	slideIndex++;
+	if (slideIndex >= slides.length) {
+		slideIndex = 0;
 	}
-	showSlide(SlideIndex);
-	SelectedDot();
+	showSlide(slideIndex);
+	selectedDot();
 });
 
 const dotsContainer = document.querySelector(".dots");
@@ -67,14 +67,14 @@ for (let i = 0; i < slides.length; i++) {
 };
 
 // Appel de la fonction SelectedDot après avoir créé les bullets points
-SelectedDot();
+selectedDot();
 
 //mettre à jour la class dot_selected selon l'index de la diapo en cours
 
-function SelectedDot() {
+function selectedDot() {
 	const dots = dotsContainer.querySelectorAll(".dot");
 	dots.forEach(function (dot, index) {
-		if (index === SlideIndex) {
+		if (index === slideIndex) {
 			dot.classList.add("dot_selected");
 		}
 		else {
