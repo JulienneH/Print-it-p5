@@ -59,7 +59,7 @@ arrowRight.addEventListener("click", function next() {
 
 const dotsContainer = document.querySelector(".dots");
 
-for (let i = 0; i < slides.length; i++) {
+for (let indice = 0; indice < slides.length; indice++) {
 	const dot = document.createElement("div");
 	dot.classList.add("dot");
 	dotsContainer.appendChild(dot);
